@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rachuzz Design</title>
+    <style>
+  /* Your existing styles */
+ /* Your existing styles */
+
+/* Ensure full page coverage */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: hidden; /* Hide horizontal scrollbar */
+}
+
+/* Ensure vertical scrolling for smaller screens */
+body {
+    overflow-y: scroll; /* Al/* Allow vertical scrollbar */
+}
+
+/* Set background gradient */
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: cover; /* Extend background to cover entire page */
+    animation: gradient 15s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+            /* Always show vertical scrollbar */
+}
+#h{
+    padding-top: 0%;
+    margin-top: 0%;
+}
+
+/* Image container */
+/* Adjust the height of the image container */
+#imageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px;
+    max-width: 100%;
+    overflow-x: auto; /* Horizontal scrolling */
+    height: auto; /* Set height to auto for responsiveness */
+    margin-top: 3000px; /* Add space at the top */
+}
+
+
+/* Modify the image card styling for responsiveness */
+.imageCard {
+    width: calc(33.33% - 20px); /* Adjust width for different screen sizes */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+/* Responsive image sizing */
+@media (max-width: 992px) {
+    .imageCard {
+        width: calc(50% - 20px); /* Adjust width for medium screens */
+    }
+}
+
+/* Adjust the width calculation for small screens */
+@media (max-width: 576px) {
+    .imageCard {
+        width: calc(100% - 40px); /* Adjust width for small screens */
+        margin: 10px; /* Add margin to each card */
+    }
+    
+}
+
+
+
+/* Adjust padding for smaller screens */
+
+/* Individual image cards */
+.imageCard {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+/* Image styling */
+.imageCard img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect for images */
+.imageCard:hover img {
+    transform: scale(1.1);
+}
+
+/* Like count */
+.likeCount {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Like button */
+.likeButton {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #e07b10;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Disabled state for like button */
+.likeButton.disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Hover effect for like button */
+.likeButton:hover {
+    background-color: #218838;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Modal content */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    max-height: 80%;
+    overflow: auto;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #e80b0b;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal animation */
+.modal-content {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Share Modal */
+#shareModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#shareModal-content {
+    margin: auto;
+    display: block;
+    width: 50%;
+    max-width: 400px;
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#shareModal-content h2 {
+    margin-top: 0;
+}
+
+#shareModal-content button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#shareModal-content button:hover {
+    background-color: #0056b3;
+}
+
+#shareModal-content img {
+    display: block;
+    margin: auto;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* Download and share buttons */
+#downloadButton,
+#shareButton {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #e05519;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+#downloadButton:hover,
+#shareButton:hover {
+    background-color: #218838;
+}
+
+/* Responsive image sizing */
+@media (max-width: 992px) {
+    .imageCard {
+        width: calc(33.33% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .imageCard {
+        width: calc(50% - 20px);
+    }
+}
+
+/* Adjust the width calculation for small screens */
+@media (max-width: 576px) {
+    .imageCard {
+        width: calc(100% - 40px); /* Adjust width for small screens */
+        margin: e0px; /* Add margin to each card */
+    }
+}
+
+/* Further adjustments for even smaller screens */
+@media (max-width: 360px) {
+    .imageCard {
+        width: calc(100% - 20px); /* Adjust width for even smaller screens */
+        margin: 10px; /* Reduce margin for even smaller screens */
+    }
+}
+
+h1 {
+          text-align: center;
+          width: 100%;
+          margin-top: 20px;
+          font-size: 24px;
+          color: #161010;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+      }
+      .intro-paragraph {
+            width: 100%;
+            text-align: center;
+            background-color: #fff; /* Adjust background color as needed */
+            padding: 20px 0; /* Adjust padding as needed */
+            margin: 0; /* Remove default margin */
+            position: fixed; /* Fixed position to keep it centered */
+            top: 50%; /* Place it at vertical center */
+            transform: translateY(-50%); /* Center it vertically */
+            z-index: 1000; /* Ensure it's on top of other content */
+        }
+
+    </style>
+</head>
+<body>
+    
+    <h1>Rachuzzz Design</h1>
+    <div id="imageContainer"></div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Modal Image">
+            <div class="modal-options">
+                <button id="downloadButton">Download</button>
+                <button id="shareButton">Share</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal">
+        <div id="shareModal-content">
+            <span class="close">&times;</span>
+            <h2>Share Image</h2>
+            <button id="shareWhatsapp">WhatsApp</button>
+            <button id="shareInstagram">Instagram</button>
+            <!-- Gmail Share using logo -->
+            <button id="shareGmail">Gmail</button>
+           
+            <!-- Add more share options as needed -->
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            // Your Firebase configuration
+            apiKey: "AIzaSyDeniGSu4JBAzsKTP4Y7rxOacH9go8ld1c",
+            authDomain: "image-upload-41b77.firebaseapp.com",
+            databaseURL: "https://image-upload-41b77-default-rtdb.firebaseio.com",
+            projectId: "image-upload-41b77",
+            storageBucket: "image-upload-41b77.appspot.com",
+            messagingSenderId: "199043032084",
+            appId: "1:199043032084:web:c008b5f0c88621eb5eb301",
+            measurementId: "G-H39S98VNDY"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Get a reference to the database service
+        const database = firebase.database();
+
+        // Function to retrieve images and their likes
+        function retrieveImagesWithLikes() {
+            const ref = database.ref('messagess'); // Reference the 'images' node in your database
+
+            ref.once('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    // Retrieve image details
+                    const image = childSnapshot.val();
+                    const imageURL = image.name;
+                    let likeCount = image.like;
+
+                    // Create elements for image, like count, and like button
+                    const imageCard = document.createElement('div');
+                    imageCard.classList.add('imageCard');
+
+                    const imgElement = document.createElement('img');
+                    imgElement.src = imageURL;
+
+                    const likeElement = document.createElement('p');
+likeElement.classList.add('likeCount');
+likeElement.textContent = "Likes: " + likeCount;
+
+const likeButton = document.createElement('button');
+likeButton.textContent = "Like";
+likeButton.classList.add('likeButton');
+likeButton.addEventListener('click', function() {
+    if (!likeButton.classList.contains('disabled')) {
+        // Update like count in the database
+        likeCount++;
+        // Get a reference to the Firebase database
+        const database = firebase.database();
+        // Update the like count in the database
+        database.ref('messagess/' + childSnapshot.key + '/like').set(likeCount)
+            .then(() => {
+                // Update the like count displayed on the page
+                likeElement.textContent = "Likes: " + likeCount;
+                // Disable the like button after it's clicked
+                likeButton.classList.add('disabled');
+                likeButton.textContent = "Liked";
+            })
+            .catch(error => {
+                console.error('Error updating like count:', error);
+            });
+    }
+});
+
+
+                    // Append image, like count, and like button to container
+                    imageCard.appendChild(imgElement);
+                    imageCard.appendChild(likeElement);
+                    imageCard.appendChild(likeButton);
+                    document.getElementById('imageContainer').appendChild(imageCard);
+
+                    // Add click event to image for modal
+                    imgElement.addEventListener('click', function() {
+                        document.getElementById('modalImage').src = imageURL;
+                        document.getElementById('myModal').style.display = "block";
+                    });
+                });
+            });
+        }
+
+        // Call the function to retrieve images and their likes
+        retrieveImagesWithLikes();
+
+        // Close the modal when the close button is clicked
+        document.getElementsByClassName("close")[0].addEventListener('click', function() {
+            document.getElementById('myModal').style.display = "none";
+        });
+
+        // Close the modal when clicked outside the modal content
+        window.onclick = function(event) {
+            const modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Function to handle the download button click
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            const imageURL = document.getElementById('modalImage').src;
+            // Create a temporary anchor element
+            const anchor = document.createElement('a');
+            anchor.href = imageURL;
+            anchor.download = 'image'; // You can specify the filename here
+            document.body.appendChild(anchor);
+            anchor.click(); // Simulate a click on the anchor element
+            document.body.removeChild(anchor); // Clean up
+        });
+
+        // Function to handle the share button click
+        document.getElementById('shareButton').addEventListener('click', function() {
+            // Display the share modal
+            document.getElementById('shareModal').style.display = "block";
+        });
+
+        // Close the share modal when the close button is clicked
+        document.getElementById('shareModal').getElementsByClassName("close")[0].addEventListener('click', function() {
+            document.getElementById('shareModal').style.display = "none";
+        });
+
+        // Function to share via WhatsApp
+        function shareViaWhatsApp() {
+            const imageURL = document.getElementById('modalImage').src;
+            const text = "Check out this image!";
+            const url = "whatsapp://send?text=" + encodeURIComponent(text + "\n" + imageURL);
+            window.location.href = url;
+        }
+
+        // Function to share via Instagram
+        function shareViaInstagram() {
+            const imageURL = document.getElementById('modalImage').src;
+            const url = "https://www.instagram.com/create/story/?media_url=" + encodeURIComponent(imageURL);
+            window.open(url, '_blank');
+        }
+
+        // Function to share via Gmail
+        function shareViaGmail() {
+            const imageURL = document.getElementById('modalImage').src;
+            const subject = "Check out this image!";
+            const body = "Hey, I found this cool image and wanted to share it with you:\n" + imageURL;
+            const url = "mailto:?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+            window.location.href = url;
+        }
+
+        // Function to handle the share via WhatsApp button click
+        document.getElementById('shareWhatsapp').addEventListener('click', function() {
+            shareViaWhatsApp();
+        });
+
+        // Function to handle the share via Instagram button click
+        document.getElementById('shareInstagram').addEventListener('click', function() {
+            shareViaInstagram();
+        });
+
+        // Function to handle the share via Gmail click
+        document.getElementById('shareGmail').addEventListener('click', function() {
+            shareViaGmail();
+        });
+
+    </script>
+</body>
+</html>
